@@ -8,4 +8,7 @@ API de Google Maps: https://maps.googleapis.com/maps/api/distancematrix/json?ori
 
 La distancia entre su ciudad de origen y su destino es : X km , su consumo para ese recorrido es de X lts, lo que equivale a un costo de X pesos
 
-Falatarina solo los costos (opcional)
+Faltarian los costos de bencina
+El tiempo del recorrido (en horas con base a km por hora supongo)
+modal en vez de textarea
+validar formulario (que al elegir opciones erroneas no se despliegue el resultado del text area)
