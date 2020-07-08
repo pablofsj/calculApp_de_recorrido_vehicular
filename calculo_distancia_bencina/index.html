@@ -23,7 +23,7 @@
     <div class="row">
       <div class="input-field col s12">
         <select id="origen">
-          <option value="" disabled selected>Elija su ciudad de origen</option>
+          <option value="0" disabled selected>Elija su ciudad de origen</option>
           <option value="1">Antofagasta</option>
           <option value="2">La Serena</option>
           <option value="3">Valparaíso</option>
@@ -37,7 +37,7 @@
     <div class="row">
       <div class="input-field col s12">
         <select id="destino">
-          <option value="" disabled selected>Elija su ciudad de destino</option>
+          <option value="0" disabled selected>Elija su ciudad de destino</option>
           <option value="1">Antofagasta</option>
           <option value="2">La Serena</option>
           <option value="3">Valparaíso</option>
@@ -51,7 +51,7 @@
     <div class="row">
       <div class="input-field col s12">
         <select id="vehiculo">
-          <option value="" disabled selected>Elija su vehículo</option>
+          <option value="0" disabled selected>Elija su vehículo</option>
           <option value="1">Hyundai Accent</option>
           <option value="2">Chevrolet Sail</option>
           <option value="3">Toyota Rav4</option>
@@ -62,7 +62,7 @@
     </div>
     <div class="row">
       <div class="col s12">
-        <button id="boton" data-target="modal1" class="red darken-2 btn modal-trigger" type="submit" name="action">Calcular distancia y consumo
+        <button id="boton" disabled="true" data-target="modal1" class="red darken-2 btn modal-trigger" type="submit" name="action">Calcular distancia y consumo
           <i class="material-icons right">arrow_forward</i>
         </button>
       </div>
@@ -74,6 +74,7 @@
     <div id="modal1" class="modal">
       <div class="modal-content">
         <h4>Resultado</h4>
+        <p></p>
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Entendido!</a>

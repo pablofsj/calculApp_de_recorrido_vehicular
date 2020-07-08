@@ -50,6 +50,7 @@ $( document ).ready(function() {
                 longitudOrigen = ciudad.longitud;
             }
         }
+        validarSelects();
     });
 });
 
@@ -64,6 +65,7 @@ $( document ).ready(function() {
                 longitudDestino = ciudad.longitud;
             }
         }
+        validarSelects();
     });
 });
 
@@ -131,14 +133,13 @@ $( document ).ready(function() {
                 rendimiento = vehiculo.consumo;
             }
         }
-        validarSelect();
+        validarSelects();
     });
 });
 
-let mensajeResultado = "";
-
 //Distancia entre ciudad origen y ciudad destino (LLamar API maps (fetch), consumo de bencina en litros y tiempo de viaje
 
+let mensajeResultado = "";
 
 $('#boton').on('click', function() {
     fetch(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${latitudOrigen},${longitudOrigen}&destinations=${latitudDestino},${longitudDestino}&key=AIzaSyAlDSRLGoUqLzoFZQlR7wvyRoNdsufoQls`)
@@ -152,7 +153,7 @@ $('#boton').on('click', function() {
         let consumo = kms/rendimiento;
         consumo = Math.round(consumo);
         mensajeResultado = `La distancia de recorrido entre las ciudades es de <span id="spanresultado">${kmsConString}</span> y su consumo de bencina será de <span id="spanresultado">${consumo} lts</span> para el vehiculo seleccionado, con un tiempo estimado de viaje de <span id="spanresultado">${distanciaEnHoras}</span>`;
-        $(".modal .modal-content").append(`<p>${mensajeResultado}</p>`);
+        $(".modal .modal-content p").html(mensajeResultado);
     });    
 });
 
@@ -162,9 +163,19 @@ $(document).ready(function(){
     });
 });
 
-   
 
+function validarSelects() {
+    let valSelectOrigen = $('#origen').find(":selected").val();
+    let valSelectDestino = $('#destino').find(":selected").val();
+    let valSelectVehiculo = $('#vehiculo').find(":selected").val();
 
+    if(valSelectOrigen != '0' && valSelectDestino != '0' && valSelectVehiculo != '0') {
+        $('#boton').prop('disabled', false);
+    }
+    else {
+        $('#boton').prop('disabled', true);
+    }
+}
 
 
 
