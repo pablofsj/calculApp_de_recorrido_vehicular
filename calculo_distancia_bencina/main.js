@@ -131,13 +131,13 @@ $( document ).ready(function() {
                 rendimiento = vehiculo.consumo;
             }
         }
-           
-    
+        validarSelect();
     });
 });
 
+let mensajeResultado = "";
 
-//Distancia entre ciudad origen y ciudad destino (LLamar API maps (fetch) y consumo de bencina en litros
+//Distancia entre ciudad origen y ciudad destino (LLamar API maps (fetch), consumo de bencina en litros y tiempo de viaje
 
 
 $('#boton').on('click', function() {
@@ -146,17 +146,23 @@ $('#boton').on('click', function() {
     //mostrar resultado en textarea
     .then(datos_json => {
         let kmsConString = datos_json.rows[0].elements[0].distance.text;
+        let distanciaEnHoras = datos_json.rows[0].elements[0].duration.text;
         let kms = kmsConString.split(" ")[0];
         kms = kms.replace(',',"");
         let consumo = kms/rendimiento;
         consumo = Math.round(consumo);
-        $('#area').val(`La distancia de recorrido entre las ciudades es de ${kmsConString} y su consumo de bencina será de ${consumo} lts para el vehiculo seleccionado`);
-    });
-    
+        mensajeResultado = `La distancia de recorrido entre las ciudades es de <span id="spanresultado">${kmsConString}</span> y su consumo de bencina será de <span id="spanresultado">${consumo} lts</span> para el vehiculo seleccionado, con un tiempo estimado de viaje de <span id="spanresultado">${distanciaEnHoras}</span>`;
+        $(".modal .modal-content").append(`<p>${mensajeResultado}</p>`);
+    });    
 });
 
-                
+$(document).ready(function(){
+    $('.modal').modal({
+        opacity : 0.6
+    });
+});
 
+   
 
 
 
